@@ -154,10 +154,7 @@ use App\Models\Type;
                         </ul>
                     </li>
                 </ul>
-
-
-
-        
+                        
             </aside>
     
             <div class="col-9">
