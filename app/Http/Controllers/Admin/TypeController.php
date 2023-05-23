@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class TypeController extends Controller
@@ -39,6 +39,8 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validatorDataForm($request);
+
         $formData = $request->all();
 
         $newType = new Type();
@@ -85,6 +87,8 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
+        $this->validatorDataForm($request);
+
         $formData = $request->all();
 
         $type->slug = Str::slug($formData['name'], '-');
@@ -106,5 +110,20 @@ class TypeController extends Controller
         $type->delete();
 
         return redirect()->route('admin.types.index');
+    }
+
+    private function validatorDataForm($request) {
+        $formData = $request->all();
+
+        $validator = Validator::make($formData, [
+            'name' => 'required',
+            'description' => 'required',
+        ],[
+            'name.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
+            'description.required' => 'Questo campo è richiesto, non puoi lasciarlo vuoto',
+        ])->validate();
+
+        return $validator;
+
     }
 }
