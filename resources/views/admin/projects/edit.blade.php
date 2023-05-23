@@ -28,6 +28,22 @@
                 </div>
                 @enderror
             </div>
+
+
+            <div class="mb-2 form-check" >
+                <label class="form-label" for="type_id">Categoria</label>
+                <select name="type_id" id="type_id">
+                    <option value="">nessuna</option>
+                    @foreach ($types as $type)
+                        <option value="{{$type->id}}" >{{$type->name ?? old($type->name)}}</option>
+                    @endforeach
+                </select>
+                @error('repo')
+                <div class="invalid-feedback">
+                    <em> {{$message}} </em>
+                </div>
+                @enderror
+            </div>
     
             <div class="mb-2 form-check" >
                 <label class="form-label" for="description">description</label>

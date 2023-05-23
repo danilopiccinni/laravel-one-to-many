@@ -4,7 +4,6 @@
 @section('content')
 
     <section class="section-admin-show">
-
         <section>
             <div class="image py-5">
                 <div class="container-fliud py-5">
@@ -25,6 +24,10 @@
         <section class="my-5">
             
             <div class="container">
+
+
+                <p>Tipologia: {{$project->type?->name}}</p>
+
                 <p>
                     {{$project->description}}{{$project->description}}{{$project->description}}
                 </p>
@@ -190,12 +193,12 @@
                   </div>
                 </div>
               </div>
+            </div>
             
 
 
 
 
-        </div>
 
 
     </section>
