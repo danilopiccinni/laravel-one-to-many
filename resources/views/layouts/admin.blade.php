@@ -113,7 +113,7 @@ use App\Models\Type;
             <aside class="ms-3 col-2">
                 <div class="aside-title">Navigazione</div>
                 <div class="inner-aside container">
-                    <ul class="nav-links mb-0">
+                    <ul class="nav-links mb-0 me-3">
                         <li class="nav-item my-3">
                             <a class="nav-link" href="{{route('admin.dashboard') }}">{{ __('Home') }}</a>
                         </li>
