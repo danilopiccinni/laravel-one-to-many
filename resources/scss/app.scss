@@ -8,11 +8,26 @@
 }
 
 aside {
-    height: 1000px;
+    border: 1px double grey;
+    height: 100%;
 
 
     position: sticky;
-    top: 50px;
+    top: 160px;
+    
+    .aside-title{
+        border: 1px solid grey;
+    }
+    .inner-aside {
+        height: 500px;
+        overflow:auto;
+
+
+        &::-webkit-scrollbar {
+        display: none;
+        }
+    }
+
 }
 
 // -----------------------------------------------
