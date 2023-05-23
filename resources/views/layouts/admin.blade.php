@@ -118,6 +118,11 @@
                     </li>
                     <li class="nav-item my-3">
                         <a class="nav-link" href="{{ route('admin.types.index') }}">{{__('Tipi di progetto')}}</a>
+                        <ul>
+                            <li>
+                                <a class="nav-link" href="{{route('admin.types.create') }}">{{ __('Nuovo tipo progetto') }}</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </aside>

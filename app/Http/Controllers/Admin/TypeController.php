@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
+
 class TypeController extends Controller
 {
     /**
@@ -26,7 +28,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.create');
     }
 
     /**
@@ -37,7 +39,19 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData = $request->all();
+
+        $newType = new Type();
+
+        $newType->name = $formData['name'];
+        $newType->description = $formData['description'];
+        $newType->slug = Str::slug($formData['name'], '-');
+
+        $newType->save();
+
+
+
+        return redirect()->route('admin.types.show' , $newType);
     }
 
     /**
@@ -59,7 +73,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
