@@ -32,10 +32,10 @@
 
             <div class="mb-2 form-check" >
                 <label class="form-label" for="type_id">Categoria</label>
-                <select name="type_id" id="type_id">
+                <select name="type_id" id="type_id" >
                     <option value="">nessuna</option>
                     @foreach ($types as $type)
-                        <option value="{{$type->id}}" >{{$type->name ?? old($type->name)}}</option>
+                        <option value="{{$type->id}}" {{$type->id == old('type_id', $project->type_id) ? 'selected' : ''}}>{{$type->name ?? old($type->name)}}</option>
                     @endforeach
                 </select>
                 @error('repo')
