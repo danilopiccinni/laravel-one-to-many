@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -21,6 +23,7 @@
 
 <body>
     <div id="app">
+
 
 
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -86,6 +89,7 @@
         </nav>
 
         <main class="">
+
             @yield('content')
         </main>
     </div>

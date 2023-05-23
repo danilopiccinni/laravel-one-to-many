@@ -1,3 +1,10 @@
+<?php
+use App\Models\Project;
+use App\Models\Type;
+    $projects = Project::all();
+    $types = Type::all();
+?>
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -102,32 +109,58 @@
     </div>
     
     <main>
-        <div class="d-flex mt-5">
-            <aside class="col-2">
+        <div class="aside d-flex mt-5">
+            <aside class="col-3">
                 <ul class="nav-links mb-0">
                     <li class="nav-item my-3">
                         <a class="nav-link" href="{{route('admin.dashboard') }}">{{ __('Home') }}</a>
                     </li>
                     <li class="nav-item my-3">
-                        <a class="nav-link" href="{{route('admin.projects.index') }}">{{ __('Progetti') }}</a>
+                        <strong>Sezione Pogetti</strong>
+
                         <ul>
-                            <li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{route('admin.projects.create') }}">{{ __('Crea un nuovo') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.projects.index') }}">{{ __('Lista Progetti') }}  ({{count($projects)}})</a>
+                                <ul>
+                                    @foreach($projects as $project)
+                                    <li class="nav-link">
+                                        <a class="nav-link" href="{{ route('admin.projects.show', $project) }}">{{$project->title}}</a>
+                                        
+                                    </li>
+                                    @endforeach
+                                </ul>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item my-3">
-                        <a class="nav-link" href="{{ route('admin.types.index') }}">{{__('Tipi di progetto')}}</a>
+                        <strong>Sezione tipologia</strong>
                         <ul>
-                            <li>
-                                <a class="nav-link" href="{{route('admin.types.create') }}">{{ __('Nuovo tipo progetto') }}</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.types.create') }}">{{ __('Crea nuova tipologia') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.types.index') }}">{{__('Lista tipologie')}} ({{count($types)}})</a>
+                                <ul>
+                                    @foreach($types as $type)
+                                    <li class="nav-link">
+                                        <a class="nav-link" href="{{ route('admin.types.show', $type) }}">{{$type->name}}</a>
+                                    </li>
+                                    @endforeach
+                                </ul>
                             </li>
                         </ul>
                     </li>
                 </ul>
+
+
+
+        
             </aside>
     
-            <div class="col-10">
+            <div class="col-9">
                 @yield('content')
             </div>
 
