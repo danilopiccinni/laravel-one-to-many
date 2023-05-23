@@ -28,9 +28,7 @@
                 @enderror
             </div>
 
-            
-    
-            <button class="btn btn-secondary ms-4 mt-3" type="submit">Crea progetto</button>
+            <button class="btn btn-secondary ms-4 mt-3" type="submit">Crea nuovo tipo progetto</button>
      
         </form>
     </div>
