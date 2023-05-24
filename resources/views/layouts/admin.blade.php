@@ -3,6 +3,12 @@ use App\Models\Project;
 use App\Models\Type;
     $projects = Project::all();
     $types = Type::all();
+
+    function giveActive($route,) {
+        if($route == Route::currentRouteName()) {
+            return 'active';
+        }
+    }
 ?>
 
 <!doctype html>
@@ -109,11 +115,51 @@ use App\Models\Type;
     </div>
     
     <main>
+
+        {{ 
+        Route::currentRouteName()
+         }}
         <div class="aside d-flex gap-3 mt-5">
             <aside class="ms-3 col-2">
                 <div class="aside-title">Navigazione</div>
                 <div class="inner-aside container">
-                    <ul class="nav-links mb-0 me-3">
+
+
+
+                    <div class="list-group">
+
+                        <a href="{{route('admin.dashboard') }}" class="list-group-item list-group-item-action {{giveActive('admin.dashboard')}}" aria-current="true">
+                            {{ __('Home') }}
+                        </a>
+
+
+                        <strong>Sezione Pogetti</strong>
+                        <a class="list-group-item list-group-item-action {{giveActive('admin.projects.index')}} " href="{{route('admin.projects.index') }}">{{ __('Lista Progetti') }}  ({{count($projects)}})</a>
+                        <a class="list-group-item list-group-item-action {{giveActive('admin.projects.create')}}" href="{{route('admin.projects.create') }}">{{ __('Crea un nuovo') }}</a>
+                        <ul>
+                            @foreach($projects as $project)
+                            <li class="nav-link">
+                                <a class="list-group-item list-group-item-action " href="{{ route('admin.projects.show', $project) }}">{{$project->title}}</a>
+                                
+                            </li>
+                            @endforeach
+                        </ul>
+                        <strong>Sezione tipologia</strong>
+                        <a class="list-group-item list-group-item-action {{giveActive('admin.types.index')}}" href="{{ route('admin.types.index') }}">{{__('Lista tipologie')}} ({{count($types)}})</a>
+                        <a class="list-group-item list-group-item-action {{giveActive('admin.types.create')}}" href="{{route('admin.types.create') }}">{{ __('Crea nuova tipologia') }}</a>
+                        <ul>
+                            @foreach($types as $type)
+                            <li class="nav-link">
+                                <a class="list-group-item list-group-item-action" href="{{ route('admin.types.show', $type) }}">{{$type->name}}</a>
+                            </li>
+                            @endforeach
+                        </ul>    
+                      </div>
+
+
+
+
+                    {{-- <ul class="nav-links mb-0 me-3">
                         <li class="nav-item my-3">
                             <a class="nav-link" href="{{route('admin.dashboard') }}">{{ __('Home') }}</a>
                         </li>
@@ -198,7 +244,7 @@ use App\Models\Type;
                                 </li>
                             </ul>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </div>
                         
             </aside>
