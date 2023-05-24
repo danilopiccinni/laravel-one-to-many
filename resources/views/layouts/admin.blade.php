@@ -119,7 +119,7 @@ use App\Models\Type;
                 <div class="inner-aside container">
                     <div class="list-group">
 
-                        <a href="{{route('admin.dashboard') }}" class="list-group-item list-group-item-action {{giveActive('admin.dashboard')}}" aria-current="true">
+                        <a href="{{route('admin.dashboard') }}" class="list-group-item list-group-item-action {{giveActive(route('admin.dashboard') )}}" aria-current="true">
                             {{ __('Home') }}
                         </a>
 
